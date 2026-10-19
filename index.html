@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="vi">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Chúc Mừng Ngày Phụ Nữ Việt Nam 20/10 | Thiệp Động Yêu Thương</title>
+    <meta name="description"
+        content="Thiệp chúc mừng ngày Phụ nữ Việt Nam 20/10 động với hiệu ứng bóng bay, trái tim bay và những lời chúc ý nghĩa, ngọt ngào nhất.">
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@600;700&family=Montserrat:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,600;0,700;1,600&display=swap"
+        rel="stylesheet">
+
+    <!-- Font Awesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <!-- Background Canvas for dynamic floating hearts, sparkles and balloons -->
+    <div id="sky-container">
+        <!-- Floating hearts and balloons will be rendered here dynamically -->
+        <canvas id="fireworks-canvas"></canvas>
+    </div>
+
+    <!-- Music toggle button -->
+    <div class="audio-control" id="audio-control" title="Bật/Tắt nhạc nền lãng mạn">
+        <button id="music-toggle-btn" class="glass-pill" aria-label="Bật/Tắt nhạc">
+            <i class="fa-solid fa-music music-icon"></i>
+            <span class="music-label">Nhạc nền</span>
+            <div class="sound-wave" id="sound-wave">
+                <span></span><span></span><span></span><span></span>
+            </div>
+        </button>
+    </div>
+
+    <!-- Floating Action Toolbar -->
+    <div class="floating-toolbar">
+        <button id="btn-release-balloons" class="toolbar-btn" title="Thả thêm bóng bay & trái tim">
+            <span class="btn-icon">🎈</span>
+            <span class="tooltip">Thả bóng & tim</span>
+        </button>
+        <button id="btn-reset-envelope" class="toolbar-btn" title="Gấp lại phong thư">
+            <span class="btn-icon">💌</span>
+            <span class="tooltip">Gấp phong bì</span>
+        </button>
+    </div>
+
+    <!-- Main Container -->
+    <main class="main-wrapper">
+        <!-- STAGE 1: ENVELOPE (Phong bì niêm phong trước khi mở) -->
+        <div class="envelope-scene" id="envelope-scene">
+            <div class="envelope-container" id="envelope-container">
+                <div class="envelope-glow"></div>
+                <div class="envelope-box" id="envelope-box">
+                    <div class="envelope-back"></div>
+
+                    <!-- Envelope card preview inside -->
+                    <div class="envelope-paper-peek">
+                        <div class="peek-badge">20 • 10</div>
+                        <div class="peek-text">Gửi Diệu Thơ yêu thương... 💌</div>
+                    </div>
+
+                    <div class="envelope-pocket"></div>
+                    <div class="envelope-flap" id="envelope-flap"></div>
+
+                    <!-- Wax seal stamp -->
+                    <div class="wax-seal" id="wax-seal" title="Bấm vào để mở thiệp">
+                        <div class="seal-inner">
+                            <i class="fa-solid fa-heart seal-heart"></i>
+                            <span class="seal-text">20/10</span>
+                        </div>
+                        <div class="seal-ring"></div>
+                        <div class="seal-pulse"></div>
+                    </div>
+                </div>
+
+                <div class="envelope-hint">
+                    <div class="hand-pointer"><i class="fa-solid fa-arrow-pointer"></i></div>
+                    <p>Chạm vào sáp niêm phong để mở thiệp gửi Diệu Thơ 💌</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- STAGE 2: EXPANDED CELEBRATION CARD (Thiệp mở rộng sau khi click) -->
+        <div class="card-scene" id="card-scene">
+            <div class="celebration-card" id="celebration-card">
+                <!-- Ribbon Corner Decor -->
+                <div class="corner-ribbon ribbon-tl"><span>20/10</span></div>
+                <div class="corner-ribbon ribbon-br"><span>Diệu Thơ</span></div>
+
+                <!-- Card Header -->
+                <header class="card-header">
+                    <div class="badge-date">
+                        <i class="fa-regular fa-calendar-star"></i>
+                        <span>Ngày Phụ Nữ Việt Nam • 20 Tháng 10</span>
+                    </div>
+                    <h1 class="card-title">
+                        <span class="title-sub">Gửi ngàn yêu thương</span>
+                        <span class="title-main">Rạng Rỡ & Hạnh Phúc</span>
+                    </h1>
+                </header>
+
+                <!-- Dedicated Recipient Badge -->
+                <div class="dedicated-banner">
+                    <div class="dedicated-glow"></div>
+                    <i class="fa-solid fa-wand-magic-sparkles banner-sparkle"></i>
+                    <span class="dedicated-prefix">Thiệp chúc mừng dành riêng cho:</span>
+                    <span class="dedicated-name">Diệu Thơ 🌸</span>
+                </div>
+
+                <!-- Card Body (Grid 2 Cột hoặc Flex trên Mobile) -->
+                <div class="card-body">
+                    <!-- Column 1: Beautiful Bouquet with Golden Frame -->
+                    <div class="card-visual">
+                        <div class="visual-frame">
+                            <div class="frame-shimmer"></div>
+                            <img src="assets/bouquet.jpg" alt="Bó hoa chúc mừng 20/10 rực rỡ dành tặng Diệu Thơ"
+                                class="bouquet-img" id="bouquet-img">
+                            <div class="frame-tag">
+                                <i class="fa-solid fa-sparkles"></i>
+                                <span>Chúc Diệu Thơ mãi xinh tươi như hoa</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Column 2: Heartfelt Wishes Content -->
+                    <div class="card-message-box">
+                        <div class="quote-icon"><i class="fa-solid fa-quote-left"></i></div>
+
+                        <div class="recipient-greeting" id="recipient-greeting">
+                            Thân gửi Diệu Thơ Yêu Thương ❤️
+                        </div>
+
+                        <div class="message-content" id="message-content">
+                            <p class="highlight-line">Nhân ngày Phụ nữ Việt Nam 20/10, chúc <strong>Diệu Thơ</strong>
+                                một ngày ngập tràn niềm vui, luôn rạng rỡ và đón nhận thật nhiều yêu thương!</p>
+                            <p>Mong rằng nụ cười của Thơ sẽ luôn tỏa nắng như sớm mai, cuộc sống luôn dịu dàng, an yên
+                                và gặp thật nhiều may mắn.</p>
+                            <p>Hãy luôn tự tin, yêu đời và tỏa sáng theo cách riêng ngọt ngào nhất của chính mình nhé!
+                            </p>
+                            <p class="poem-line">"Chúc Thơ rực rỡ tựa ngàn hoa<br>Tháng ngày hạnh phúc, ngập ngọc ngà ✨"
+                            </p>
+                        </div>
+
+                        <div class="quote-icon right"><i class="fa-solid fa-quote-right"></i></div>
+
+                        <!-- Lời nhắn ngắn & Chữ ký -->
+                        <div class="message-signature">
+                            <span class="signature-date">20.10.2026</span>
+                            <span class="signature-sign">Trân trọng & Yêu thương ❤️</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Interactive Features Inside Card -->
+                <div class="card-footer">
+                    <div class="footer-actions">
+                        <button id="btn-boost-balloons" class="action-btn primary pulse-btn dedicated-boost-btn">
+                            <i class="fa-solid fa-heart-pulse"></i>
+                            <span>Bắn tim & Thả bóng bay mừng Diệu Thơ 🎈</span>
+                        </button>
+                    </div>
+
+                    <p class="touch-hint">
+                        <i class="fa-solid fa-hand-pointer"></i>
+                        Chạm vào màn hình bất cứ đâu để tạo tim bay!
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Toast Notification Popup -->
+    <div class="toast" id="toast">
+        <i class="fa-solid fa-circle-check toast-icon"></i>
+        <span id="toast-text">Đã sao chép lời chúc vào bộ nhớ tạm!</span>
+    </div>
+
+    <!-- Script -->
+    <script src="script.js"></script>
+</body>
+
+</html>
